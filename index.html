@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detetive — Resolva o Caso</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2312233b'/%3E%3Ccircle cx='16' cy='16' r='7' fill='none' stroke='%23f2b01e' stroke-width='2.4'/%3E%3Ccircle cx='13.5' cy='13.5' r='1.4' fill='%23e8eef5'/%3E%3Cpath d='M20.5 20.5 L25 25' stroke='%23f2b01e' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <noscript>
+    <div class="noscript-box">
+      <strong>JavaScript está desativado.</strong> O Detetive — Resolva o Caso precisa de JavaScript para funcionar.
+      Ative o JavaScript no seu navegador e recarregue a página.
+    </div>
+  </noscript>
+
+  <header id="appbar">
+    <div class="appbar-inner">
+      <button class="icon-btn" id="btn-home" title="Tela inicial" aria-label="Ir para a tela inicial">
+        <span data-icon="home"></span>
+      </button>
+      <button class="icon-btn" id="btn-back" title="Voltar" aria-label="Voltar">
+        <span data-icon="back"></span>
+      </button>
+      <div class="brand">
+        <span class="brand-badge" data-icon="fingerprint"></span>
+        <span class="brand-name">Detetive</span>
+        <span class="brand-sub">Resolva o Caso</span>
+      </div>
+      <div class="appbar-right">
+        <span id="appbar-status" class="chip" title="Nível atual"></span>
+        <span id="appbar-score" class="chip" title="Pontuação acumulada"></span>
+      </div>
+    </div>
+  </header>
+
+  <main id="app-main">
+
+    <!-- TELA INICIAL -->
+    <section id="screen-home" class="screen active" aria-label="Tela inicial">
+      <div class="home-grid">
+        <div class="home-hero">
+          <h1 class="home-title">Detetive</h1>
+          <p class="home-title-sub">— Resolva o Caso —</p>
+          <p class="home-tagline">“Cada detalhe importa. Cada pista pode mudar tudo.”</p>
+          <div id="home-continue"></div>
+          <div class="home-actions">
+            <button class="btn btn-primary btn-lg" data-action="start">Iniciar investigação</button>
+            <button class="btn" data-action="cases">Casos disponíveis</button>
+            <button class="btn" data-action="performance">Meu desempenho</button>
+            <button class="btn" data-action="achievements">Conquistas</button>
+            <button class="btn" data-action="history">Histórico de investigações</button>
+            <button class="btn" data-action="instructions">Como jogar</button>
+            <button class="btn" data-action="share-progress">Compartilhar progresso</button>
+            <button class="btn" data-action="settings">Configurações</button>
+          </div>
+        </div>
+        <aside class="home-panel" id="home-panel"></aside>
+      </div>
+    </section>
+
+    <!-- CATEGORIAS -->
+    <section id="screen-categories" class="screen" aria-label="Categorias de investigação">
+      <div class="screen-head">
+        <h2>Categorias de investigação</h2>
+        <p>Escolha o tipo de ocorrência que deseja investigar. Cada categoria reúne casos com desafios diferentes.</p>
+      </div>
+      <div id="categories-grid" class="cat-grid"></div>
+    </section>
+
+    <!-- LISTA DE CASOS -->
+    <section id="screen-cases" class="screen" aria-label="Casos disponíveis">
+      <div class="screen-head">
+        <h2 id="cases-title">Casos disponíveis</h2>
+        <p id="cases-subtitle"></p>
+      </div>
+      <div id="cases-list" class="case-grid"></div>
+    </section>
+
+    <!-- APRESENTAÇÃO DA OCORRÊNCIA -->
+    <section id="screen-briefing" class="screen" aria-label="Apresentação da ocorrência">
+      <div id="briefing-content"></div>
+    </section>
+
+    <!-- PAINEL DE INVESTIGAÇÃO -->
+    <section id="screen-investigation" class="screen" aria-label="Painel de investigação">
+      <div id="investigation-content"></div>
+    </section>
+
+    <!-- CONCLUSÃO -->
+    <section id="screen-conclusion" class="screen" aria-label="Confirmar conclusão">
+      <div id="conclusion-content"></div>
+    </section>
+
+    <!-- RESULTADO -->
+    <section id="screen-result" class="screen" aria-label="Resultado da investigação">
+      <div id="result-content"></div>
+    </section>
+
+    <!-- HISTÓRICO -->
+    <section id="screen-history" class="screen" aria-label="Histórico de investigações">
+      <div class="screen-head">
+        <h2>Histórico de investigações</h2>
+        <p>Os 10 resultados mais recentes, do mais novo para o mais antigo.</p>
+      </div>
+      <div id="history-content"></div>
+    </section>
+
+    <!-- DESEMPENHO -->
+    <section id="screen-performance" class="screen" aria-label="Meu desempenho">
+      <div class="screen-head">
+        <h2>Meu desempenho</h2>
+        <p>Acompanhe seu nível, pontuação e progressão na carreira de detetive.</p>
+      </div>
+      <div id="performance-content"></div>
+    </section>
+
+    <!-- CONQUISTAS -->
+    <section id="screen-achievements" class="screen" aria-label="Conquistas">
+      <div class="screen-head">
+        <h2>Conquistas</h2>
+        <p>Resolva casos e complete etapas do arquivo para desbloquear conquistas e recompensas.</p>
+      </div>
+      <div id="achievements-content"></div>
+    </section>
+
+    <!-- INSTRUÇÕES -->
+    <section id="screen-instructions" class="screen" aria-label="Como jogar">
+      <div class="screen-head">
+        <h2>Como jogar</h2>
+        <p>Um manual rápido para a sua investigação.</p>
+      </div>
+      <div id="instructions-content"></div>
+    </section>
+
+    <!-- CONFIGURAÇÕES -->
+    <section id="screen-settings" class="screen" aria-label="Configurações">
+      <div class="screen-head">
+        <h2>Configurações</h2>
+        <p>Ajuste o aplicativo e gerencie seus dados locais.</p>
+      </div>
+      <div id="settings-content"></div>
+    </section>
+
+  </main>
+
+  <footer class="app-footer">
+    <span>Detetive — Resolva o Caso · Jogo de investigação fictício · Funciona offline</span>
+  </footer>
+
+  <div id="modal-root" aria-live="polite"></div>
+  <div id="toast-root" aria-live="polite"></div>
+
+  <script src="data/cases.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/scoring.js"></script>
+  <script src="js/sharing.js"></script>
+  <script src="js/achievements.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/investigation.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
